@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Descargar TraduceSeña</title>
+  <meta name="description" content="Descarga la app de TraduceSeña para Android: traduce Lengua de Señas Colombiana a texto y voz.">
+  <meta name="color-scheme" content="light">
+  <link rel="icon" type="image/png" href="assets/icono-senas.png">
+  <style>
+    :root {
+      --ink: #1F2937;
+      --body: #6B7280;
+      --hint: #9CA3AF;
+      --purple: #9B77E6;
+      --purple-dark: #7E5AD0;
+      --purple-btn: #BE9EF4;
+      --purple-btn-2: #D4C2F3;
+      --lilac-bg: #EDE9FE;
+      --card-bg: #FBFAFE;
+      --card-border: #F1EEF9;
+      --border-soft: #D6C9F5;
+      --green: #10B981;
+      --green-bg: #DCF5EA;
+      --amber: #F59E0B;
+      --amber-bg: #FCF3D6;
+      --white: #FFFFFF;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #F6F2FF 0%, var(--white) 420px);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    a { color: var(--purple-dark); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 20px 16px 48px; }
+
+    header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 18px; }
+    .brand img { width: 40px; height: 40px; border-radius: 12px; background: var(--lilac-bg); padding: 4px; }
+    select {
+      font: inherit; font-size: 14px; color: var(--ink);
+      padding: 8px 12px; border-radius: 12px;
+      border: 1.5px solid var(--border-soft); background: var(--white); cursor: pointer;
+    }
+
+    .hero { text-align: center; padding: 48px 0 28px; }
+    .hero h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.15; margin: 0 0 12px; }
+    .hero p { color: var(--body); font-size: 17px; margin: 0 auto; max-width: 520px; }
+
+    .card {
+      background: var(--white); border: 1px solid var(--card-border); border-radius: 22px;
+      padding: 24px; box-shadow: 0 12px 32px rgba(126, 90, 208, 0.10);
+    }
+    .download { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 26px; border-radius: 16px; border: 0;
+      background: linear-gradient(135deg, var(--purple-btn), var(--purple-btn-2));
+      color: var(--white); font: inherit; font-size: 17px; font-weight: 800;
+      text-decoration: none; text-shadow: 0 1px 2px rgba(126, 90, 208, 0.35);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(126, 90, 208, 0.25); }
+    .btn:focus-visible { outline: 3px solid var(--purple-dark); outline-offset: 3px; }
+    .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
+    .btn svg { width: 22px; height: 22px; flex: none; }
+    .meta { color: var(--body); font-size: 14px; margin: 0; }
+    .badge {
+      display: inline-block; font-size: 13px; font-weight: 700; border-radius: 999px; padding: 4px 12px;
+      background: var(--green-bg); color: #047857;
+    }
+    .badge.pending { background: var(--amber-bg); color: #92400E; }
+
+    h2 { font-size: 20px; margin: 36px 0 14px; }
+    ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; counter-reset: step; }
+    ol.steps li {
+      counter-increment: step; display: flex; gap: 14px; align-items: flex-start;
+      background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 14px 16px;
+    }
+    ol.steps li::before {
+      content: counter(step); flex: none; width: 30px; height: 30px; border-radius: 10px;
+      display: grid; place-items: center; font-weight: 800; color: var(--purple-dark); background: var(--lilac-bg);
+    }
+    ol.steps strong { display: block; }
+    ol.steps span { color: var(--body); font-size: 15px; }
+    .note { color: var(--body); font-size: 14px; margin-top: 14px; }
+
+    footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--card-border); color: var(--hint); font-size: 14px; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="https://traducesenas.tech">
+        <img src="assets/icono-senas.png" alt="">
+        <span>TraduceSeña</span>
+      </a>
+      <select id="lang" aria-label="Idioma">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="pt">Português</option>
+      </select>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1 data-i18n="title">Descarga TraduceSeña para Android</h1>
+        <p data-i18n="subtitle">Traduce Lengua de Señas Colombiana a texto y voz desde la cámara de tu celular.</p>
+      </section>
+
+      <section class="card download" aria-live="polite">
+        <span id="status" class="badge pending" data-i18n="checking">Buscando la última versión…</span>
+        <a id="download" class="btn" href="https://github.com/tadeo77789/traducesenas-download/releases/latest/download/traducesenas.apk" aria-disabled="true">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 18c0 .55.45 1 1 1h1v3.5a1.5 1.5 0 0 0 3 0V19h2v3.5a1.5 1.5 0 0 0 3 0V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8A1.5 1.5 0 0 0 2 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 3.5 8zm17 0A1.5 1.5 0 0 0 19 9.5v7a1.5 1.5 0 0 0 3 0v-7A1.5 1.5 0 0 0 20.5 8zm-4.97-5.84 1.3-1.3a.5.5 0 1 0-.71-.71l-1.48 1.48A5.96 5.96 0 0 0 12 1c-.96 0-1.86.23-2.66.63L7.85.15a.5.5 0 1 0-.7.7l1.31 1.31A5.97 5.97 0 0 0 6 7h12a5.99 5.99 0 0 0-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+          <span data-i18n="download">Descargar APK</span>
+        </a>
+        <p id="meta" class="meta"></p>
+      </section>
+
+      <h2 data-i18n="howTitle">Cómo instalarla</h2>
+      <ol class="steps">
+        <li><div><strong data-i18n="step1Title">Descarga el archivo</strong><span data-i18n="step1">Toca «Descargar APK» desde tu celular Android. Si lo descargas en el computador, pásalo al celular.</span></div></li>
+        <li><div><strong data-i18n="step2Title">Ábrelo</strong><span data-i18n="step2">Abre el archivo desde las notificaciones o la carpeta Descargas.</span></div></li>
+        <li><div><strong data-i18n="step3Title">Permite la instalación</strong><span data-i18n="step3">Si Android lo pide, activa «Permitir de esta fuente» para tu navegador o gestor de archivos.</span></div></li>
+        <li><div><strong data-i18n="step4Title">Instala y abre la app</strong><span data-i18n="step4">Toca «Instalar». Al abrirla, permite el acceso a la cámara para reconocer las señas.</span></div></li>
+      </ol>
+      <p class="note" data-i18n="update">Para actualizar, descarga la versión nueva e instálala encima: tus datos se conservan.</p>
+    </main>
+
+    <footer>
+      <span data-i18n="web">¿Prefieres no instalar nada?</span>
+      <a href="https://traducesenas.tech" data-i18n="webLink">Usa la versión web</a>
+    </footer>
+  </div>
+
+  <script>
+    // Releases del repo: el APK se publica como asset "traducesenas.apk" (ver README).
+    const REPO = 'tadeo77789/traducesenas-download';
+    const APK_NAME = 'traducesenas.apk';
+
+    const STRINGS = {
+      es: {
+        pageTitle: 'Descargar TraduceSeña',
+        language: 'Idioma',
+        title: 'Descarga TraduceSeña para Android',
+        subtitle: 'Traduce Lengua de Señas Colombiana a texto y voz desde la cámara de tu celular.',
+        checking: 'Buscando la última versión…',
+        available: 'Versión {version}',
+        pending: 'Disponible muy pronto',
+        download: 'Descargar APK',
+        meta: 'Publicada el {date} · {size}',
+        metaPending: 'Todavía no hay una versión publicada. Mientras tanto puedes usar la versión web.',
+        metaUnknown: 'Archivo APK para Android',
+        howTitle: 'Cómo instalarla',
+        step1Title: 'Descarga el archivo',
+        step1: 'Toca «Descargar APK» desde tu celular Android. Si lo descargas en el computador, pásalo al celular.',
+        step2Title: 'Ábrelo',
+        step2: 'Abre el archivo desde las notificaciones o la carpeta Descargas.',
+        step3Title: 'Permite la instalación',
+        step3: 'Si Android lo pide, activa «Permitir de esta fuente» para tu navegador o gestor de archivos.',
+        step4Title: 'Instala y abre la app',
+        step4: 'Toca «Instalar». Al abrirla, permite el acceso a la cámara para reconocer las señas.',
+        update: 'Para actualizar, descarga la versión nueva e instálala encima: tus datos se conservan.',
+        web: '¿Prefieres no instalar nada?',
+        webLink: 'Usa la versión web',
+      },
+      en: {
+        pageTitle: 'Download TraduceSeña',
+        language: 'Language',
+        title: 'Download TraduceSeña for Android',
+        subtitle: 'Translate Colombian Sign Language into text and speech with your phone camera.',
+        checking: 'Looking for the latest version…',
+        available: 'Version {version}',
+        pending: 'Coming soon',
+        download: 'Download APK',
+        meta: 'Released on {date} · {size}',
+        metaPending: 'No version has been released yet. In the meantime you can use the web version.',
+        metaUnknown: 'APK file for Android',
+        howTitle: 'How to install it',
+        step1Title: 'Download the file',
+        step1: 'Tap “Download APK” on your Android phone. If you download it on a computer, copy it to your phone.',
+        step2Title: 'Open it',
+        step2: 'Open the file from your notifications or the Downloads folder.',
+        step3Title: 'Allow the installation',
+        step3: 'If Android asks, turn on “Allow from this source” for your browser or file manager.',
+        step4Title: 'Install and open the app',
+        step4: 'Tap “Install”. When you open it, allow camera access so it can recognize signs.',
+        update: 'To update, download the new version and install it over the old one: your data is kept.',
+        web: 'Rather not install anything?',
+        webLink: 'Use the web version',
+      },
+      fr: {
+        pageTitle: 'Télécharger TraduceSeña',
+        language: 'Langue',
+        title: 'Téléchargez TraduceSeña pour Android',
+        subtitle: 'Traduisez la langue des signes colombienne en texte et en voix avec la caméra de votre téléphone.',
+        checking: 'Recherche de la dernière version…',
+        available: 'Version {version}',
+        pending: 'Bientôt disponible',
+        download: "Télécharger l'APK",
+        meta: 'Publiée le {date} · {size}',
+        metaPending: "Aucune version n'est encore publiée. En attendant, vous pouvez utiliser la version web.",
+        metaUnknown: 'Fichier APK pour Android',
+        howTitle: "Comment l'installer",
+        step1Title: 'Téléchargez le fichier',
+        step1: "Touchez « Télécharger l'APK » sur votre téléphone Android. Si vous le téléchargez sur un ordinateur, copiez-le sur le téléphone.",
+        step2Title: 'Ouvrez-le',
+        step2: 'Ouvrez le fichier depuis les notifications ou le dossier Téléchargements.',
+        step3Title: "Autorisez l'installation",
+        step3: "Si Android le demande, activez « Autoriser cette source » pour votre navigateur ou gestionnaire de fichiers.",
+        step4Title: "Installez et ouvrez l'app",
+        step4: "Touchez « Installer ». À l'ouverture, autorisez l'accès à la caméra pour reconnaître les signes.",
+        update: 'Pour mettre à jour, téléchargez la nouvelle version et installez-la par-dessus : vos données sont conservées.',
+        web: "Vous préférez ne rien installer ?",
+        webLink: 'Utilisez la version web',
+      },
+      pt: {
+        pageTitle: 'Baixar TraduceSeña',
+        language: 'Idioma',
+        title: 'Baixe o TraduceSeña para Android',
+        subtitle: 'Traduza a Língua de Sinais Colombiana para texto e voz com a câmera do seu celular.',
+        checking: 'Procurando a versão mais recente…',
+        available: 'Versão {version}',
+        pending: 'Disponível em breve',
+        download: 'Baixar APK',
+        meta: 'Publicada em {date} · {size}',
+        metaPending: 'Ainda não há uma versão publicada. Enquanto isso, você pode usar a versão web.',
+        metaUnknown: 'Arquivo APK para Android',
+        howTitle: 'Como instalar',
+        step1Title: 'Baixe o arquivo',
+        step1: 'Toque em “Baixar APK” no seu celular Android. Se baixar no computador, copie para o celular.',
+        step2Title: 'Abra o arquivo',
+        step2: 'Abra o arquivo pelas notificações ou pela pasta Downloads.',
+        step3Title: 'Permita a instalação',
+        step3: 'Se o Android pedir, ative “Permitir desta fonte” para o navegador ou gerenciador de arquivos.',
+        step4Title: 'Instale e abra o app',
+        step4: 'Toque em “Instalar”. Ao abrir, permita o acesso à câmera para reconhecer os sinais.',
+        update: 'Para atualizar, baixe a nova versão e instale por cima: seus dados são mantidos.',
+        web: 'Prefere não instalar nada?',
+        webLink: 'Use a versão web',
+      },
+    };
+
+    const LANGS = Object.keys(STRINGS);
+    const select = document.getElementById('lang');
+    const statusEl = document.getElementById('status');
+    const metaEl = document.getElementById('meta');
+    const downloadEl = document.getElementById('download');
+
+    let lang = 'es';
+    let release; // undefined = consultando, null = sin versión publicada
+
+    const fill = (text, params) => text.replace(/\{(\w+)\}/g, (m, k) => (k in params ? params[k] : m));
+    const formatSize = bytes => (bytes / (1024 * 1024)).toFixed(1).replace('.', lang === 'en' ? '.' : ',') + ' MB';
+
+    function readSavedLang() {
+      try { return localStorage.getItem('lang'); } catch { return null; }
+    }
+
+    function initialLang() {
+      const fromUrl = new URLSearchParams(location.search).get('lang');
+      const browser = (navigator.language || '').slice(0, 2);
+      return [fromUrl, readSavedLang(), browser].find(code => LANGS.includes(code)) || 'es';
+    }
+
+    function render() {
+      const s = STRINGS[lang];
+      document.documentElement.lang = lang;
+      document.title = s.pageTitle;
+      select.value = lang;
+      select.setAttribute('aria-label', s.language);
+      document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = s[el.dataset.i18n]; });
+
+      if (release === undefined) {
+        statusEl.textContent = s.checking;
+        statusEl.className = 'badge pending';
+        metaEl.textContent = '';
+        return;
+      }
+      if (release === null) {
+        statusEl.textContent = s.pending;
+        statusEl.className = 'badge pending';
+        metaEl.textContent = s.metaPending;
+        downloadEl.setAttribute('aria-disabled', 'true');
+        downloadEl.tabIndex = -1;
+        return;
+      }
+      statusEl.textContent = release.version ? fill(s.available, { version: release.version }) : s.metaUnknown;
+      statusEl.className = 'badge';
+      metaEl.textContent = release.date
+        ? fill(s.meta, {
+            date: new Intl.DateTimeFormat(lang, { dateStyle: 'long' }).format(release.date),
+            size: formatSize(release.size),
+          })
+        : '';
+      downloadEl.href = release.url;
+      downloadEl.removeAttribute('aria-disabled');
+      downloadEl.removeAttribute('tabindex');
+    }
+
+    async function loadRelease() {
+      try {
+        const res = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`, {
+          headers: { Accept: 'application/vnd.github+json' },
+        });
+        if (res.status === 404) { release = null; return; }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        const asset = (data.assets || []).find(a => a.name === APK_NAME)
+          || (data.assets || []).find(a => a.name.endsWith('.apk'));
+        release = asset
+          ? { version: data.tag_name.replace(/^v/, ''), date: new Date(data.published_at), size: asset.size, url: asset.browser_download_url }
+          : null;
+      } catch {
+        // Sin acceso a la API (límite de peticiones, red): se deja el enlace fijo a la última versión.
+        release = { version: null, date: null, size: 0, url: downloadEl.href };
+      }
+    }
+
+    select.addEventListener('change', () => {
+      lang = select.value;
+      try { localStorage.setItem('lang', lang); } catch { /* sin almacenamiento: solo esta visita */ }
+      render();
+    });
+
+    lang = initialLang();
+    render();
+    loadRelease().then(render);
+  </script>
+</body>
+</html>
