@@ -95,6 +95,13 @@
     ol.steps span { color: var(--body); font-size: 15px; }
     .note { color: var(--body); font-size: 14px; margin-top: 14px; }
 
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .feature { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 14px 16px; }
+    .feature strong { display: block; margin-bottom: 2px; }
+    .feature span { color: var(--body); font-size: 15px; }
+    ul.reqs { margin: 0; padding-left: 20px; color: var(--body); display: grid; gap: 6px; }
+    ul.reqs li::marker { color: var(--purple); }
+
     footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--card-border); color: var(--hint); font-size: 14px; text-align: center; }
   </style>
 </head>
@@ -132,6 +139,22 @@
         </div>
       </section>
 
+      <h2 data-i18n="featuresTitle">Qué puedes hacer</h2>
+      <div class="features">
+        <div class="feature"><strong data-i18n="feat1Title">Traducir señas</strong><span data-i18n="feat1">Haz señas frente a la cámara y míralas como texto o escúchalas en voz alta.</span></div>
+        <div class="feature"><strong data-i18n="feat2Title">Aprender el abecedario</strong><span data-i18n="feat2">Practica las letras de la Lengua de Señas Colombiana con imagen y modelo 3D.</span></div>
+        <div class="feature"><strong data-i18n="feat3Title">Ver tu historial</strong><span data-i18n="feat3">Consulta las traducciones que guardaste.</span></div>
+        <div class="feature"><strong data-i18n="feat4Title">Seguir tu progreso</strong><span data-i18n="feat4">Revisa tus estadísticas y los logros que desbloqueas.</span></div>
+      </div>
+
+      <h2 data-i18n="reqsTitle">Qué necesitas</h2>
+      <ul class="reqs">
+        <li data-i18n="req1">Un celular con Android 7.0 o superior.</li>
+        <li data-i18n="req2">Conexión a internet y una cuenta (correo, Google o Facebook).</li>
+        <li data-i18n="req3">Permiso para usar la cámara.</li>
+        <li data-i18n="req4">Espacio libre para el archivo (unos 140 MB).</li>
+      </ul>
+
       <h2 data-i18n="howTitle">Cómo instalarla</h2>
       <ol class="steps">
         <li><div><strong data-i18n="step1Title">Descarga el archivo</strong><span data-i18n="step1">Toca «Descargar APK» desde tu celular Android. Si lo descargas en el computador, pásalo al celular.</span></div></li>
@@ -167,6 +190,20 @@
         metaPending: 'Todavía no hay una versión publicada. Mientras tanto puedes usar la versión web.',
         metaUnknown: 'Archivo APK para Android',
         notesTitle: 'Novedades de esta versión',
+        featuresTitle: 'Qué puedes hacer',
+        feat1Title: 'Traducir señas',
+        feat1: 'Haz señas frente a la cámara y míralas como texto o escúchalas en voz alta.',
+        feat2Title: 'Aprender el abecedario',
+        feat2: 'Practica las letras de la Lengua de Señas Colombiana con imagen y modelo 3D.',
+        feat3Title: 'Ver tu historial',
+        feat3: 'Consulta las traducciones que guardaste.',
+        feat4Title: 'Seguir tu progreso',
+        feat4: 'Revisa tus estadísticas y los logros que desbloqueas.',
+        reqsTitle: 'Qué necesitas',
+        req1: 'Un celular con Android 7.0 o superior.',
+        req2: 'Conexión a internet y una cuenta (correo, Google o Facebook).',
+        req3: 'Permiso para usar la cámara.',
+        req4: 'Espacio libre para el archivo (unos 140 MB).',
         howTitle: 'Cómo instalarla',
         step1Title: 'Descarga el archivo',
         step1: 'Toca «Descargar APK» desde tu celular Android. Si lo descargas en el computador, pásalo al celular.',
@@ -193,6 +230,20 @@
         metaPending: 'No version has been released yet. In the meantime you can use the web version.',
         metaUnknown: 'APK file for Android',
         notesTitle: "What's new (in Spanish)",
+        featuresTitle: 'What you can do',
+        feat1Title: 'Translate signs',
+        feat1: 'Sign in front of the camera and see it as text or hear it read aloud.',
+        feat2Title: 'Learn the alphabet',
+        feat2: 'Practice the letters of Colombian Sign Language with pictures and a 3D model.',
+        feat3Title: 'See your history',
+        feat3: 'Look back at the translations you saved.',
+        feat4Title: 'Track your progress',
+        feat4: 'Check your stats and the achievements you unlock.',
+        reqsTitle: 'What you need',
+        req1: 'A phone with Android 7.0 or later.',
+        req2: 'An internet connection and an account (email, Google or Facebook).',
+        req3: 'Permission to use the camera.',
+        req4: 'Free space for the file (about 140 MB).',
         howTitle: 'How to install it',
         step1Title: 'Download the file',
         step1: 'Tap “Download APK” on your Android phone. If you download it on a computer, copy it to your phone.',
@@ -219,6 +270,20 @@
         metaPending: "Aucune version n'est encore publiée. En attendant, vous pouvez utiliser la version web.",
         metaUnknown: 'Fichier APK pour Android',
         notesTitle: 'Nouveautés (en espagnol)',
+        featuresTitle: 'Ce que vous pouvez faire',
+        feat1Title: 'Traduire des signes',
+        feat1: 'Signez devant la caméra et voyez le résultat en texte ou écoutez-le à voix haute.',
+        feat2Title: "Apprendre l'alphabet",
+        feat2: 'Pratiquez les lettres de la langue des signes colombienne avec image et modèle 3D.',
+        feat3Title: 'Voir votre historique',
+        feat3: 'Retrouvez les traductions que vous avez enregistrées.',
+        feat4Title: 'Suivre vos progrès',
+        feat4: 'Consultez vos statistiques et les succès débloqués.',
+        reqsTitle: 'Ce dont vous avez besoin',
+        req1: 'Un téléphone sous Android 7.0 ou plus récent.',
+        req2: 'Une connexion internet et un compte (e-mail, Google ou Facebook).',
+        req3: "L'autorisation d'utiliser la caméra.",
+        req4: "De l'espace libre pour le fichier (environ 140 Mo).",
         howTitle: "Comment l'installer",
         step1Title: 'Téléchargez le fichier',
         step1: "Touchez « Télécharger l'APK » sur votre téléphone Android. Si vous le téléchargez sur un ordinateur, copiez-le sur le téléphone.",
@@ -245,6 +310,20 @@
         metaPending: 'Ainda não há uma versão publicada. Enquanto isso, você pode usar a versão web.',
         metaUnknown: 'Arquivo APK para Android',
         notesTitle: 'Novidades (em espanhol)',
+        featuresTitle: 'O que você pode fazer',
+        feat1Title: 'Traduzir sinais',
+        feat1: 'Faça sinais em frente à câmera e veja o resultado em texto ou ouça em voz alta.',
+        feat2Title: 'Aprender o alfabeto',
+        feat2: 'Pratique as letras da Língua de Sinais Colombiana com imagem e modelo 3D.',
+        feat3Title: 'Ver seu histórico',
+        feat3: 'Consulte as traduções que você salvou.',
+        feat4Title: 'Acompanhar seu progresso',
+        feat4: 'Veja suas estatísticas e as conquistas desbloqueadas.',
+        reqsTitle: 'O que você precisa',
+        req1: 'Um celular com Android 7.0 ou superior.',
+        req2: 'Conexão com a internet e uma conta (e-mail, Google ou Facebook).',
+        req3: 'Permissão para usar a câmera.',
+        req4: 'Espaço livre para o arquivo (cerca de 140 MB).',
         howTitle: 'Como instalar',
         step1Title: 'Baixe o arquivo',
         step1: 'Toque em “Baixar APK” no seu celular Android. Se baixar no computador, copie para o celular.',
