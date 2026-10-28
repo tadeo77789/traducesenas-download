@@ -19,7 +19,7 @@ La web (botón "Descargar app para Android" de la landing) enlaza a esta página
 
    También se puede hacer desde GitHub: *Releases → Draft a new release*, etiqueta `v1.0.0` y adjuntar el archivo.
 
-La página muestra sola la versión, la fecha y el tamaño del último Release. No hay que tocar el HTML ni volver a desplegar nada.
+La página muestra sola la versión, la fecha, el tamaño y las notas (en "Novedades de esta versión") del último Release. Escribe las notas en español y en texto plano, para quien instala la app: la página no interpreta Markdown. No hay que tocar el HTML ni volver a desplegar nada.
 
 Enlace directo que siempre descarga la última versión:
 
